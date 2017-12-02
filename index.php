@@ -35,9 +35,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<div class="main">
 		<div class="header" >
-			<h1>SIAC-17</h1>
+			<h1>Demo Project</h1>
 		</div>
-		<p>Self Improvement and Ameliorate Concentration Activity Monitor Portal</p>
+		<p>Lorem Ipsum Doet Lorem Ipsum Doet Lorem Ipsum Doet Lorem Ipsum Doet Lorem Ipsum Doet </p>
 			<form>
 				<!-- Signup Form -->
 				<ul class="left-form">
@@ -51,6 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li id="su-err-username" style="border:none; margin:0px; display:none">
 						<p style="color: tomato;">Enter a valid name.</p>
 					</li>
+
 					<li>
 						<input type="email" id="su-inp-email" placeholder="Email" required/>
 						<span id="su-email"> </span>
@@ -59,6 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li id="su-err-email" style="border:none; margin:0px; display:none">
 						<p style="color: tomato;">Enter a valid email address.</p>
 					</li>
+
 					<li>
 						<input type="password" id="su-inp-pwd" placeholder="Password" required/>
 						<span id="su-pwd"> </span>
@@ -67,14 +69,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li id="su-err-pwd" style="border:none; margin:0px; display:none">
 						<p style="color: tomato;">Password must be alphanumberic 6-15 characters.</p>
 					</li>
+
 					<li>
-						<input type="password" id="su-inp-cnfpwd" placeholder="Confirm Password" required/>
-						<span id="su-cnfpwd"> </span>
+						<input type="text" id="su-inp-mb" placeholder="Mobile" required/>
+						<span id="su-mb"> </span>
 						<div class="clear"> </div>
 					</li> 
-					<li id="su-err-cnfpwd" style="border:none; margin:0px; display:none">
-						<p style="color: tomato;">Passwords do not match.</p>
+					<li id="su-err-mb" style="border:none; margin:0px; display:none">
+						<p style="color: tomato;">Enter a valid mobile number.</p>
 					</li>
+
+					<li>
+						<input type="text" id="su-inp-addr" placeholder="Address" required/>
+						<span id="su-addr"> </span>
+						<div class="clear"> </div>
+					</li> 
+					<li id="su-err-addr" style="border:none; margin:0px; display:none">
+						<p style="color: tomato;">Enter a valid address.</p>
+					</li>
+
 					<input type="button" onclick="validateSignup()" class="signup-btn" value="Create Account">
 						<div class="clear"> </div>
 				</ul>

@@ -3,9 +3,10 @@ method="manual";
 
 function validateSignup(){
     
-    var uname = $("#su-inp-username").val(), email = $("#su-inp-email").val(), pwd = $("#su-inp-pwd").val(), cnfpwd = $("#su-inp-cnfpwd").val();
+    var uname = $("#su-inp-username").val(), email = $("#su-inp-email").val(), pwd = $("#su-inp-pwd").val();
+    var mb = $("#su-inp-mb").val(), addr = $("#su-inp-addr").val();
     
-    var validemail=false, validpwd=false, validcnfpwd=false;
+    var validemail=false, validpwd=false, validcnfpwd=false, validmb=false, validaddr=false;
 
     //email
     var patt = new RegExp("^[a-z][a-z0-9\.\-\_\+]{2,20}@(gmail|yahoo|outlook|hotmail).(com|in|org|xyz|co)$");
@@ -19,25 +20,27 @@ function validateSignup(){
     document.getElementById("su-pwd").className = res==true ? "icon ticker" : "icon into";
     validpwd = res;
     
-    //cnfpwd
-    if(res) {
-       document.getElementById("su-cnfpwd").className = pwd==cnfpwd ? "icon ticker" : "icon into";
-        validcnfpwd = pwd==cnfpwd;
-    }
-    else
-        document.getElementById("su-cnfpwd").className = "icon into";
-    
+    //mobile
+    var patt = new RegExp("[0-9]{10}");
+    var res = patt.test(mb);
+    document.getElementById("su-mb").className = res==true ? "icon ticker" : "icon into";
+    validmb = res;
 
+    //Address
+    validaddr = addr.length>10;
+    document.getElementById("su-addr").className = validaddr ? "icon ticker" : "icon into";
+    
     $("#su-err-email").css("display", validemail ? "none" : "block");
     $("#su-err-pwd").css("display", validpwd ? "none" : "block");
-    $("#su-err-cnfpwd").css("display", validpwd && pwd==cnfpwd ? "none" : "block");
+    $("#su-err-mb").css("display", validmb ? "none" : "block");
+    $("#su-err-addr").css("display", validaddr ? "none" : "block");
 
-    if (validemail && validpwd && validcnfpwd) {
+    if (validemail && validpwd && validmb && validaddr) {
         $("#process-label").css({"display":"block", "color": "#3F51B5"}).html("Please wait. Processing signup...");
         $.ajax({
             type: "post",
             url: "signup.php",
-            data: {"name":uname, "email":email, "pwd": pwd},
+            data: {"name":uname, "email":email, "pwd": pwd, "mb": mb, "addr": addr},
             statusCode: {
                 500: function(){
                     $("#process-label").css("color", "tomato").html("Internal Server Error Occurred!");

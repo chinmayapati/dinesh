@@ -3,9 +3,9 @@
 error_reporting(1);
 session_start();
 
-define("DB_LINK", "localhost");
-define("DB_USER", "root");
-define("DB_PASSWORD", "");
+define("DB_LINK", "codesnip.xyz");
+define("DB_USER", "chiku");
+define("DB_PASSWORD", "Password@1");
 define("DB_DATABASE", "siac17");
     
 class Database {
@@ -29,13 +29,13 @@ class Database {
         return mysqli_num_rows($res)==1;
     }
     
-    public function signup($name, $email, $pwd) {
+    public function signup($name, $email, $pwd, $mb, $addr) {
         if($this->link) {
             if( !$this->email_exists($email) ) {
-                $sql = "INSERT INTO `creds`(name, email, password) VALUES('$name', '$email', '$pwd');";
+                $sql = "INSERT INTO `creds`(name, email, password, mobile, address) VALUES('$name', '$email', '$pwd', '$mb', '$addr');";
                 $res = mysqli_query($this->link, $sql);
                 if( mysqli_affected_rows($this->link)==1 ) return true;
-                else return "Signup Failed. Try after sometime.";
+                else return "Signup Failed. Try after sometime.".mysqli_error($this->link);
             }
             else return "User already exists!";
         }
